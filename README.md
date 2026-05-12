@@ -20,11 +20,12 @@ Kafelerde haftalık veya günlük vardiya yazmak; kimin hangi gün izinli olduğ
 * **Veritabanı:** SQLite (Maliyetsiz, yerel ve hızlı veri okuma/yazma işlemleri için tercih edilmiştir)
 * **Ön Yüz (Frontend):** HTML5, CSS3, Vanilla JavaScript (Herhangi bir ağır framework kullanılmadan, saf performans odaklı tasarlanmıştır)
 
-## 🛠️ Proje Görselleri 📷
+## 📷 Proje Görselleri 
 <img width="1905" height="912" alt="Ekran Resmi 2026-05-12 19 10 18" src="https://github.com/user-attachments/assets/7e428942-19a8-4b80-bce0-5e89a99d5ef8" />
-<img width="1888" height="907" alt="Ekran Resmi 2026-05-12 19 09 17" src="https://github.com/user-attachments/assets/21de68d2-d101-4a64-85e4-7961effca0a6" />
-<img width="1878" height="905" alt="Ekran Resmi 2026-05-12 19 09 08" src="https://github.com/user-attachments/assets/bdb786b0-0ab6-4124-9459-8fd6a3f8ac6f" />
-<img width="1881" height="904" alt="Ekran Resmi 2026-05-12 19 07 51" src="https://github.com/user-attachments/assets/0fa78ab0-2036-44cd-ae26-5b3cf7637c3f" />
-<img width="1895" height="896" alt="Ekran Resmi 2026-05-12 19 07 09" src="https://github.com/user-attachments/assets/6c2ef83e-578d-4e9c-ad20-86e051ff685e" />
 <img width="1879" height="911" alt="Ekran Resmi 2026-05-12 19 05 50" src="https://github.com/user-attachments/assets/672cecaf-d9e7-41af-b3f3-89493c6fd6f8" />
-<img width="1895" height="905" alt="Ekran Resmi 2026-05-12 19 05 41" src="https://github.com/user-attachments/assets/cd1e728f-4835-4893-9ac5-5b0dc0492dde" />
+<img width="1895" height="896" alt="Ekran Resmi 2026-05-12 19 07 09" src="https://github.com/user-attachments/assets/6c2ef83e-578d-4e9c-ad20-86e051ff685e" />
+<img width="1881" height="904" alt="Ekran Resmi 2026-05-12 19 07 51" src="https://github.com/user-attachments/assets/0fa78ab0-2036-44cd-ae26-5b3cf7637c3f" />
+<img width="1878" height="905" alt="Ekran Resmi 2026-05-12 19 09 08" src="https://github.com/user-attachments/assets/bdb786b0-0ab6-4124-9459-8fd6a3f8ac6f" />
+<img width="1888" height="907" alt="Ekran Resmi 2026-05-12 19 09 17" src="https://github.com/user-attachments/assets/21de68d2-d101-4a64-85e4-7961effca0a6" />
+
+
