@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kafe Personel Yönetim ve Vardiya Optimizasyon Sistemi">
+  <title>☕ Kafe Yönetim Paneli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">☕</span>
+          <span class="logo-text">Kafe<span class="logo-accent">Panel</span></span>
+        </div>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Dashboard</span>
+        </li>
+        <li class="nav-item" data-page="staff">
+          <span class="nav-icon">👥</span>
+          <span class="nav-label">Personel</span>
+        </li>
+        <li class="nav-item" data-page="timeoff">
+          <span class="nav-icon">🏖️</span>
+          <span class="nav-label">İzin Yönetimi</span>
+        </li>
+        <li class="nav-item" data-page="generate">
+          <span class="nav-icon">⚡</span>
+          <span class="nav-label">Vardiya Oluştur</span>
+        </li>
+        <li class="nav-item" data-page="calendar">
+          <span class="nav-icon">📅</span>
+          <span class="nav-label">Takvim</span>
+        </li>
+        <li class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Ayarlar</span>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="version-badge">v1.0</div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Dashboard Page -->
+      <section class="page active" id="dashboard-page">
+        <div class="page-header">
+          <h1>Dashboard</h1>
+          <p class="page-subtitle">Kafe personel yönetimine genel bakış</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card" id="stat-total-staff">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <span class="stat-value">—</span>
+              <span class="stat-label">Toplam Personel</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-barista-count">
+            <div class="stat-icon">☕</div>
+            <div class="stat-info">
+              <span class="stat-value">—</span>
+              <span class="stat-label">Barista</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-garson-count">
+            <div class="stat-icon">🍽️</div>
+            <div class="stat-info">
+              <span class="stat-value">—</span>
+              <span class="stat-label">Garson</span>
+            </div>
+          </div>
+          <div class="stat-card" id="stat-today-shift">
+            <div class="stat-icon">📋</div>
+            <div class="stat-info">
+              <span class="stat-value">—</span>
+              <span class="stat-label">Bugün Vardiyada</span>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-grid">
+          <div class="glass-card">
+            <h2>Bugünün Vardiyası</h2>
+            <div id="today-shift-display" class="today-shift-container">
+              <p class="empty-state">Henüz bugün için vardiya oluşturulmamış.</p>
+            </div>
+          </div>
+          <div class="glass-card">
+            <h2>İzinli Personel (Bu Hafta)</h2>
+            <div id="week-timeoff-display">
+              <p class="empty-state">Bu hafta izinli personel yok.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Staff Page -->
+      <section class="page" id="staff-page">
+        <div class="page-header">
+          <h1>Personel Yönetimi</h1>
+          <p class="page-subtitle">Personel ekleyin, düzenleyin veya çıkarın</p>
+        </div>
+        <div class="glass-card">
+          <div class="card-header-row">
+            <h2>Yeni Personel Ekle</h2>
+          </div>
+          <form id="staff-form" class="form-grid">
+            <input type="hidden" id="staff-edit-id">
+            <div class="form-group">
+              <label for="staff-first-name">Ad</label>
+              <input type="text" id="staff-first-name" placeholder="Adı girin" required>
+            </div>
+            <div class="form-group">
+              <label for="staff-last-name">Soyad</label>
+              <input type="text" id="staff-last-name" placeholder="Soyadı girin" required>
+            </div>
+            <div class="form-group">
+              <label for="staff-role">Rol</label>
+              <select id="staff-role" required>
+                <option value="">Seçin...</option>
+                <option value="Barista">Barista</option>
+                <option value="Garson">Garson</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="staff-availability">Müsaitlik</label>
+              <select id="staff-availability" required>
+                <option value="">Seçin...</option>
+                <option value="Sabah">Sabah</option>
+                <option value="Araci">Aracı</option>
+                <option value="Aksam">Akşam</option>
+                <option value="Esnek">Esnek</option>
+              </select>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="staff-cash-auth">
+                <span class="checkmark"></span>
+                Kasa Yetkisi
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="staff-submit-btn">
+                <span>Personel Ekle</span>
+              </button>
+              <button type="button" class="btn btn-ghost" id="staff-cancel-btn" style="display:none;">
+                İptal
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="glass-card">
+          <h2>Personel Listesi</h2>
+          <div class="table-container">
+            <table id="staff-table">
+              <thead>
+                <tr>
+                  <th>Ad Soyad</th>
+                  <th>Rol</th>
+                  <th>Müsaitlik</th>
+                  <th>Kasa Yetkisi</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="staff-table-body">
+                <tr><td colspan="5" class="empty-state">Henüz personel eklenmemiş.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Time Off Page -->
+      <section class="page" id="timeoff-page">
+        <div class="page-header">
+          <h1>İzin Yönetimi</h1>
+          <p class="page-subtitle">Personel izinlerini yönetin</p>
+        </div>
+        <div class="glass-card">
+          <h2>İzin Ekle</h2>
+          <form id="timeoff-form" class="form-grid">
+            <div class="form-group">
+              <label for="timeoff-staff">Personel</label>
+              <select id="timeoff-staff" required>
+                <option value="">Personel seçin...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="timeoff-date">Tarih</label>
+              <input type="date" id="timeoff-date" required>
+            </div>
+            <div class="form-group">
+              <label for="timeoff-note">Not (Opsiyonel)</label>
+              <input type="text" id="timeoff-note" placeholder="İzin nedeni...">
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">İzin Ekle</button>
+            </div>
+          </form>
+        </div>
+        <div class="glass-card">
+          <div class="card-header-row">
+            <h2>İzin Listesi</h2>
+            <div class="filter-row">
+              <select id="timeoff-filter-staff">
+                <option value="">Tüm personel</option>
+              </select>
+              <input type="month" id="timeoff-filter-month">
+            </div>
+          </div>
+          <div class="table-container">
+            <table id="timeoff-table">
+              <thead>
+                <tr>
+                  <th>Personel</th>
+                  <th>Tarih</th>
+                  <th>Rol</th>
+                  <th>Not</th>
+                  <th>İşlem</th>
+                </tr>
+              </thead>
+              <tbody id="timeoff-table-body">
+                <tr><td colspan="5" class="empty-state">Henüz izin kaydı yok.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Generate Shifts Page -->
+      <section class="page" id="generate-page">
+        <div class="page-header">
+          <h1>Vardiya Oluştur</h1>
+          <p class="page-subtitle">Tarih seçin, 3 alternatif vardiya planı oluşturun</p>
+        </div>
+        <div class="glass-card">
+          <form id="generate-form" class="form-inline">
+            <div class="form-group">
+              <label for="generate-date">Tarih Seçin</label>
+              <input type="date" id="generate-date" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-glow">
+              <span>⚡ Vardiya Üret</span>
+            </button>
+          </form>
+        </div>
+        <div id="shift-options-container" class="options-grid">
+          <!-- Options will render here -->
+        </div>
+      </section>
+
+      <!-- Calendar Page -->
+      <section class="page" id="calendar-page">
+        <div class="page-header">
+          <h1>Vardiya Takvimi</h1>
+          <p class="page-subtitle">Aylık vardiya planını görüntüleyin</p>
+        </div>
+        <div class="glass-card">
+          <div class="calendar-controls">
+            <button class="btn btn-ghost" id="cal-prev">◀ Önceki Ay</button>
+            <h2 id="cal-month-title">—</h2>
+            <button class="btn btn-ghost" id="cal-next">Sonraki Ay ▶</button>
+          </div>
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- Calendar renders here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Page -->
+      <section class="page" id="settings-page">
+        <div class="page-header">
+          <h1>Ayarlar</h1>
+          <p class="page-subtitle">Personel hedef sayılarını yapılandırın</p>
+        </div>
+        <div class="glass-card">
+          <h2>Personel Hedef Sayıları</h2>
+          <p class="settings-desc">Haftaiçi ve haftasonu için minimum ve hedef personel sayılarını belirleyin.</p>
+          <div class="settings-grid" id="settings-grid">
+            <!-- Settings render here -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/staffManager.js"></script>
+  <script src="js/timeOffManager.js"></script>
+  <script src="js/shiftGenerator.js"></script>
+  <script src="js/calendar.js"></script>
+</body>
+</html>

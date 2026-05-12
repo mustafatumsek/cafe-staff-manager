@@ -1,0 +1,15 @@
+{
+  "name": "cafe-staff-manager",
+  "version": "1.0.0",
+  "description": "Kafe Personel Yönetim ve Vardiya Optimizasyon Sistemi",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "node --watch server/app.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}
